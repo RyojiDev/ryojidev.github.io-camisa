@@ -115,9 +115,9 @@ $(function() {
         console.log(gola);
         parametros_pesquisa.cor = 'branca';
         if (parametros_pesquisa.gola == 'Gola V') {
-            $('#foto-produto').attr('src', '../img/v-white.jpg');
+            $('#foto-produto').attr('src', 'img/v-white.jpg');
         } else {
-            $('#foto-produto').attr('src', '../img/normal-white.jpg');
+            $('#foto-produto').attr('src', 'img/normal-white.jpg');
         }
     });
 
@@ -127,9 +127,9 @@ $(function() {
         parametros_pesquisa.cor = 'colorida';
 
         if (parametros_pesquisa.gola == 'Gola V') {
-            $('#foto-produto').attr('src', '../img/v-color.jpg');
+            $('#foto-produto').attr('src', 'img/v-color.jpg');
         } else {
-            $('#foto-produto').attr('src', '../img/normal-color.jpg');
+            $('#foto-produto').attr('src', 'img/normal-color.jpg');
         }
     });
 
@@ -172,17 +172,17 @@ $(function() {
 function GolaVOrGolaNormal(gola) {
     if (parametros_pesquisa.cor == 'branca') {
         if (gola.html() == 'Gola V') {
-            $("#foto-produto").attr('src', '../img/v-white.jpg');
+            $("#foto-produto").attr('src', 'img/v-white.jpg');
 
         } else {
-            $('#foto-produto').attr('src', '../img/normal-white.jpg');
+            $('#foto-produto').attr('src', 'img/normal-white.jpg');
         }
     }
     if (parametros_pesquisa.cor == 'colorida') {
         if (gola.html() == 'Gola V') {
-            $("#foto-produto").attr('src', '../img/v-color.jpg');
+            $("#foto-produto").attr('src', 'img/v-color.jpg');
         } else {
-            $('#foto-produto').attr('src', '../img/normal-color.jpg');
+            $('#foto-produto').attr('src', 'img/normal-color.jpg');
         }
     }
     ComEstampaOuSem();
