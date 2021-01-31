@@ -57,7 +57,7 @@ var camisetas = {
 var parametros_pesquisa = {
     "quantidade": 10,
     "cor": "colorida",
-    "gola": "gola_v",
+    "gola": "Gola V",
     "qualidade": "q150",
     "estampa": "com_estampa",
     "embalagem": "bulk"
@@ -91,6 +91,12 @@ if (paramSearchExist) {
 
 $(function() {
 
+    $('#gola').click(function() {
+        var gola = $('#gola').find('.selected')
+        console.log(gola);
+        GolaVOrGolaNormal(gola);
+    });
+
     // Se quiser uma sugestão dos passos a seguir para a resolução, veja mais abaixo.
 
     $('#quantidade').change(function() {
@@ -100,10 +106,14 @@ $(function() {
     });
 
 
-    $('#branca').click(function() {
+
+
+    $('#branca').click(function(e) {
         $('#colorida').removeClass('selected');
         $(this).addClass('selected')
-
+        var gola = $(e.target).val();
+        console.log(gola);
+        parametros_pesquisa.cor = 'branca';
         if (parametros_pesquisa.gola == 'Gola V') {
             $('#foto-produto').attr('src', '../img/v-white.jpg');
         } else {
@@ -111,18 +121,111 @@ $(function() {
         }
     });
 
+    $('#colorida').click(function() {
+        $('#branca').removeClass('selected');
+        $(this).addClass('selected')
+        parametros_pesquisa.cor = 'colorida';
+
+        if (parametros_pesquisa.gola == 'Gola V') {
+            $('#foto-produto').attr('src', '../img/v-color.jpg');
+        } else {
+            $('#foto-produto').attr('src', '../img/normal-color.jpg');
+        }
+    });
+
+    $('#gola_v').click(function() {
+        $("#gola_normal").removeClass('selected');
+        $(this).addClass('selected');
+        parametros_pesquisa.gola = 'Gola V';
+        GolaVOrGolaNormal(gola)
+    });
+
+    $('#gola_normal').click(function() {
+        $("#gola_v").removeClass('selected');
+        $(this).addClass('selected');
+        parametros_pesquisa.gola = 'Gola Normal';
+        GolaVOrGolaNormal(gola)
+    });
+
+    $('#q150').click(function() {
+        $("#q190").removeClass('selected');
+        $(this).addClass('selected');
+        parametros_pesquisa.qualidade = 'q150';
+    });
+
+    $('#q190').click(function() {
+        $("#q150").removeClass('selected');
+        $(this).addClass('selected');
+        parametros_pesquisa.qualidade = 'q190';
+    });
+    $("#embalagem").click(function() {
+        $("#embalagem").change(function() {
+            var embalagem = $(this).val();
+            parametros_pesquisa.embalagem = embalagem
+        })
+    })
+
+    $("#estampa").change(ComEstampaOuSem);
+
 });
 
-function Gola(gola) {
-    if (gola.val() == 'gola_v') {
-        if (parametros_pesquisa.cor == 'branca')
+function GolaVOrGolaNormal(gola) {
+    if (parametros_pesquisa.cor == 'branca') {
+        if (gola.html() == 'Gola V') {
             $("#foto-produto").attr('src', '../img/v-white.jpg');
 
-        $('#foto-produto').attr('src', '../img/normal-white.jpg');
+        } else {
+            $('#foto-produto').attr('src', '../img/normal-white.jpg');
+        }
+    }
+    if (parametros_pesquisa.cor == 'colorida') {
+        if (gola.html() == 'Gola V') {
+            $("#foto-produto").attr('src', '../img/v-color.jpg');
+        } else {
+            $('#foto-produto').attr('src', '../img/normal-color.jpg');
+        }
+    }
+    ComEstampaOuSem();
+}
+
+function IsSelected(event) {
+    $(event).removeClass('selected');
+    $(event).addClass('selected')
+
+}
+
+function ComEstampaOuSem() {
+    if ($('#estampa').val() == "sem_estampa") {
+        parametros_pesquisa.estampa = "sem_estampa";
+    } else {
+        parametros_pesquisa.estampa = "com_estampa";
+    }
+    if (parametros_pesquisa.cor == 'branca') {
+        if (parametros_pesquisa.gola == 'Gola Normal') {
+            $('#foto-produto').attr('src', '../img/' + camisetas.branca.gola_normal.sem_estampa.foto);
+            if (parametros_pesquisa.estampa == "com_estampa")
+                $("#foto-produto").attr('src', '../img/' + camisetas.branca.gola_normal.com_estampa.foto);
+        } else if (parametros_pesquisa.gola == "Gola V") {
+            $("#foto-produto").attr('src', '../img/' + camisetas.branca.gola_v.sem_estampa.foto);
+            if (parametros_pesquisa.estampa == "com_estampa")
+                $("#foto-produto").attr('src', '../img/' + camisetas.branca.gola_v.com_estampa.foto);
+        }
+    } else if (parametros_pesquisa.cor == 'colorida') {
+        if (parametros_pesquisa.gola == 'Gola Normal') {
+            $('#foto-produto').attr('src', '../img/' + camisetas.colorida.gola_normal.sem_estampa.foto);
+            if (parametros_pesquisa.estampa == "com_estampa")
+                $("#foto-produto").attr('src', '../img/' + camisetas.colorida.gola_normal.com_estampa.foto);
+        } else if (parametros_pesquisa.gola == "Gola V") {
+            $("#foto-produto").attr('src', '../img/' + camisetas.colorida.gola_v.sem_estampa.foto);
+            if (parametros_pesquisa.estampa == "com_estampa")
+                $("#foto-produto").attr('src', '../img/' + camisetas.colorida.gola_v.com_estampa.foto);
+        }
     }
 }
 
+function CalcPrice() {
 
+}
 
 
 
