@@ -202,23 +202,23 @@ function ComEstampaOuSem() {
     }
     if (parametros_pesquisa.cor == 'branca') {
         if (parametros_pesquisa.gola == 'Gola Normal') {
-            $('#foto-produto').attr('src', '../img/' + camisetas.branca.gola_normal.sem_estampa.foto);
+            $('#foto-produto').attr('src', 'img/' + camisetas.branca.gola_normal.sem_estampa.foto);
             if (parametros_pesquisa.estampa == "com_estampa")
-                $("#foto-produto").attr('src', '../img/' + camisetas.branca.gola_normal.com_estampa.foto);
+                $("#foto-produto").attr('src', 'img/' + camisetas.branca.gola_normal.com_estampa.foto);
         } else if (parametros_pesquisa.gola == "Gola V") {
-            $("#foto-produto").attr('src', '../img/' + camisetas.branca.gola_v.sem_estampa.foto);
+            $("#foto-produto").attr('src', 'img/' + camisetas.branca.gola_v.sem_estampa.foto);
             if (parametros_pesquisa.estampa == "com_estampa")
-                $("#foto-produto").attr('src', '../img/' + camisetas.branca.gola_v.com_estampa.foto);
+                $("#foto-produto").attr('src', 'img/' + camisetas.branca.gola_v.com_estampa.foto);
         }
     } else if (parametros_pesquisa.cor == 'colorida') {
         if (parametros_pesquisa.gola == 'Gola Normal') {
-            $('#foto-produto').attr('src', '../img/' + camisetas.colorida.gola_normal.sem_estampa.foto);
+            $('#foto-produto').attr('src', 'img/' + camisetas.colorida.gola_normal.sem_estampa.foto);
             if (parametros_pesquisa.estampa == "com_estampa")
-                $("#foto-produto").attr('src', '../img/' + camisetas.colorida.gola_normal.com_estampa.foto);
+                $("#foto-produto").attr('src', 'img/' + camisetas.colorida.gola_normal.com_estampa.foto);
         } else if (parametros_pesquisa.gola == "Gola V") {
-            $("#foto-produto").attr('src', '../img/' + camisetas.colorida.gola_v.sem_estampa.foto);
+            $("#foto-produto").attr('src', 'img/' + camisetas.colorida.gola_v.sem_estampa.foto);
             if (parametros_pesquisa.estampa == "com_estampa")
-                $("#foto-produto").attr('src', '../img/' + camisetas.colorida.gola_v.com_estampa.foto);
+                $("#foto-produto").attr('src', 'img/' + camisetas.colorida.gola_v.com_estampa.foto);
         }
     }
 }
